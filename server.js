@@ -14,9 +14,7 @@ config = require('./config');
  */
 server = restify.createServer();
 server.use(restify.bodyParser());
-
 mongoose.connect(config.mongo.connectionString);
-//schema = mongoose.Schema;
 
 module.exports.app = {
 	mongoose : mongoose,
@@ -24,8 +22,8 @@ module.exports.app = {
 };
 
 var logincontroller = require("./controller/usercontroller");
-server.post('/user', logincontroller.addUser);
-server.get('/user/:name', logincontroller.checkUser);
+server.post('/user', logincontroller.addUserData);
+server.get('/user/:id', logincontroller.getUserData);
 
 /** Server listening at port 8080 **/
 server.listen(8080);

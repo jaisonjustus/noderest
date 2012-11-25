@@ -1,1 +1,11 @@
-{"name":"collectionexchange","subdomain":"collectionexchange","scripts":{"start":"server.js"},"version":"0.0.0-3","engines":{"node":"0.8.x"},"dependencies":{"restify":"*","mongoose":"*"},"bundledDependencies":["restify","mongoose",".bin"],"env":{"npm_config_rebuild_bundle":false,"npm_config_production":true}}
+{
+  "name": "collectionexchange",
+  "subdomain": "collectionexchange",
+  "scripts": {
+    "start": "server.js"
+  },
+  "version": "0.0.0-2",
+  "engines": {
+    "node": "0.8.x"
+  }
+}

@@ -7,7 +7,6 @@ var UserSchema;
 app = module.parent.exports.app;
 if(app.server && app.mongoose)	{
 	mongoose = app.mongoose;
-
 	schema = mongoose.Schema;
 };
 
@@ -19,29 +18,38 @@ UserSchema = require('./../schema/userschema');
 /** 
  * Method to check user exist or not;
  */
-module.exports.addUser = function(request, response, next)	{
+module.exports.addUserData = function(request, response, next)	{
 	if(UserSchema)	{
 		var User;
 
 		mongoose.model('user', UserSchema);
 		User = mongoose.model('user');
 
-		var user = new User();
+		if(this.checkUserData(request.params.email))	{
+			var user = new User();
 
-		user.name = request.params.name;
-		user.email = request.params.email;
-		user.password = request.params.password;
+			user.name = request.params.name;
+			user.email = request.params.email;
+			user.password = request.params.password;
 
-		user.save(function()	{
-			response.send = request.body;
-		});
+			user.save(function()	{
+				response.send = request.body;
+			});
+		}else	{
+			var response = {
+				error : 'user already exist',
+				code : 'USER001'
+			};
+
+			response.send(response);
+		}
 
 	}else	{
 		throw new exception("bad schema");
 	}
 };
 
-module.exports.checkUser = function(request, response, next)	{
+module.exports.getUserData = function(request, response, next)	{
 	if(UserSchema)	{
 		var User;
 		console.log('checking...');
@@ -69,3 +77,27 @@ module.exports.checkUser = function(request, response, next)	{
 		throw new exception("bad schema");
 	}
 };
+
+module.exports.checkUserData = function(email)	{
+	var User, query;
+
+	email = (!email) ? false : email;
+	User = mongoose.model('user', UserSchema);
+
+	if(email)	{
+		query = User.find({
+			'email' : email
+		});
+	}else	{
+		query = User.find();
+	}
+
+	query.exec(function(error, user)	{
+		if(error) return handleError(error);
+		if(user.length == 0)	{
+			return false;
+		}else	{
+			return true;
+		}
+	});
+}
