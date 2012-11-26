@@ -34,7 +34,29 @@ var UserRoute = function()	{
 	server.get('/user/name', controllers.User.getUserDetails);
 };
 
+var imageRoute = function()	{
+		server.post('/images', function(request, response, next)	{
+		var file;
+
+		file = require('fs')
+
+		file.readFile(request.files.file.path, function (err, data) {
+		  // ...
+		  var newPath = __dirname + "/upload/" + request.files.file.name;
+		  console.log(newPath, data);
+		  file.writeFile(newPath, data, function (err) {
+		    response.send({});
+		  });
+		});
+	});
+
+	server.get('/images/', function(request, response, next)	{
+		response.send({});
+	});
+};
+
 var routeRegister = {
-	user : UserRoute()
+	user : UserRoute(),
+	image : imageRoute()
 };
 
