@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Backbone Application</title>
+    <body>
+        <script src="scripts/vendor/jquery.min.js"></script>
+        <script src="scripts/vendor/lodash.min.js"></script>
+        <script src="scripts/vendor/backbone-min.js"></script>
+
+        <script type="text/javascript" src="scripts/models/UserModel.js"></script>
+        <script type="text/javascript">
+            var User = new UserModel();
+
+            User.set({
+                _id : "50b4d367538b52bb12000003"
+            });
+
+            // console.log(User.get("password"));
+
+            // User.changeName('Krishna Kumar');
+            // User.changeEmail('krishnau2@gmail.com');
+            // console.log(User.save(null,{
+            //     success : function(model, response) {
+            //         console.log(response, model);
+            //     }
+            // }));
+            User.fetch();
+            User.changeName('KK');
+            console.log(User.save(null,{
+                success : function(model, response) {
+                    console.log(response, model);
+                }
+            }));
+        </script>
+    </body>
+</html>
