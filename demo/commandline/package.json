@@ -1,0 +1,17 @@
+{
+  "name": "noderest",
+  "description": "JavaScript's api.",
+  "homepage": "http://github.com/jaisonjustus/noderest",
+  "keywords": [
+    "api"
+  ],
+  "author": {
+    "name": "jaison justus",
+    "email": "jaison.justus.lp@gmail.com"
+  },
+  "main": "noderest.js",
+  "version": "0.0.0",
+  "readme": "test",
+  "_id": "noderest@0.0.0",
+  "_from": "noderest"
+}

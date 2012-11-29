@@ -1,0 +1,27 @@
+{
+  "name": "noderest",
+  "preferGlobal": "true",
+  "description": "Noderest a restify-mongo framework",
+  "homepage": "http://github.com/jaisonjustus/noderest",
+  "keywords": [
+    	"api",
+	"rest",
+	"framework"
+  ],
+"dependencies": {
+    "colors": "",
+    "commander": ""
+  },
+  "bin": {
+    "noderest" : "/usr/lib/node_modules/noderest/noderest.js"
+  },
+  "author": {
+    "name": "jaison justus",
+    "email": "jaison.justus.lp@gmail.com"
+  },
+  "main": "noderest.js",
+  "version": "0.0.1",
+  "readme": "test",
+  "_id": "noderest@0.0.0",
+  "_from": "noderest"
+}
