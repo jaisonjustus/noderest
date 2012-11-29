@@ -29,9 +29,10 @@ module.exports = {
 
 var UserRoute = function()	{
 	server.post('/user', controllers.User.addUserDetails);
+	server.put('/user/:_id', controllers.User.updateUserDetails);
 	server.get('/user/', controllers.User.getUserDetails);
 	server.get('/user/:_id', controllers.User.getUserDetails);
-	server.get('/user/name', controllers.User.getUserDetails);
+	server.get('/user/:name', controllers.User.getUserDetails);
 };
 
 var imageRoute = function()	{
